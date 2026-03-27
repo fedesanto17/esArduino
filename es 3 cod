@@ -1,0 +1,33 @@
+int statoPulsante=0;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(2, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+}
+
+void loop()
+{
+  statoPulsante=digitalRead(2);
+  while(statoPulsante==LOW){
+  	digitalWrite(LED_BUILTIN, LOW);
+  	digitalWrite(12, LOW);
+  	digitalWrite(11, LOW);
+    statoPulsante=digitalRead(2);
+  }
+  digitalWrite(LED_BUILTIN, HIGH);
+  digitalWrite(12, LOW);
+  digitalWrite(11, LOW);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(12, HIGH);
+  digitalWrite(11, LOW);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(11, HIGH);
+  delay(1000);
+}
